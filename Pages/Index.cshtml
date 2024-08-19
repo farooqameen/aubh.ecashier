@@ -42,9 +42,19 @@
     <div></div>
     <div class="card mb-3">
         <div class="card-body">
-            <label for="item" id="item" class="form-control">Select an item:</label>
-            <br />
-            <select asp-for="Service" asp-items="Html.GetEnumSelectList<ServiceEnum>()"></select>
+            <form>
+                <div class="mb-3">
+                    <label for="item">Select an item: </label>
+                    <select class="form-select" asp-for="Service" asp-items="Html.GetEnumSelectList<ServiceEnum>()"></select>
+                </div>
+                <div class="mb-3">
+                    <!--https://intl-tel-input.com/-->
+                </div>
+                <div class="mb-3">
+                    <label for="note">Note:</label>
+                    <textarea id="note" name="note" class="form-control"></textarea>
+                </div>
+            </form>
         </div>
     </div>
 </div>
