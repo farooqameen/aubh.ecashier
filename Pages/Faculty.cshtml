@@ -1,19 +1,12 @@
 ﻿@page
-@model IndexModel
+@model PrivacyModel
 @{
-    ViewData["Title"] = "Home page";
-    Layout = "_Layout";
+    ViewData["Title"] = "Faculty";
+    Layout = "_Backend";
 }
 
-<!--
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
--->
-
-<div class="container">
-    <div class="card my-3">
+<div class="container-fluid">
+    <div class="card mb-3">
         <div class="card-header">
             Customer Information
         </div>
@@ -40,22 +33,5 @@
             </form>
         </div>
     </div>
-    <div></div>
-    <div class="card mb-3">
-        <div class="card-body">
-            <form>
-                <div class="mb-3">
-                    <label for="item">Select an item: </label>
-                    <select class="form-select" asp-for="Service" asp-items="Html.GetEnumSelectList<ServiceEnum>()"></select>
-                </div>
-                <div class="mb-3">
-                    <!--https://intl-tel-input.com/-->
-                </div>
-                <div class="mb-3">
-                    <label for="note">Note:</label>
-                    <textarea id="note" name="note" class="form-control"></textarea>
-                </div>
-            </form>
-        </div>
-    </div>
 </div>
+

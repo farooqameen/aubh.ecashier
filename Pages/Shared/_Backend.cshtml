@@ -26,7 +26,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Faculty">Faculty</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
                     </ul>
                 </div>
@@ -35,9 +35,26 @@
     </header>
 
     <div class="container-fluid">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+        <div class="row">
+            <div class="h-100 col col-auto bg-light">
+                <ul class="vh-100 navbar-nav m-2">
+                    <li class="nav-item p-2">
+                        <a>Inventory Form</a>
+                    </li>
+                    <li class="nav-item p-2">
+                        <a>Customer Form</a>
+                    </li>
+                    <li class="nav-item p-2">
+                        <a>General Settings</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col mt-3">
+                <main role="main" class="pb-3">
+                    @RenderBody()
+                </main>
+            </div>
+        </div>
     </div>
 
     <footer class="border-top footer text-muted">
