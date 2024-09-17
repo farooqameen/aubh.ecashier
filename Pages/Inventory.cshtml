@@ -1,17 +1,56 @@
 ﻿@page
-@model PrivacyModel
+@model InventoryModel
 @{
-    ViewData["Title"] = "Faculty";
+    ViewData["Title"] = "Inventory";
     Layout = "_Backend";
 }
 
 <div class="container-fluid">
     <div class="card mb-3">
         <div class="card-header">
-            <h3> Sample Heading </h3>
+            <h6 class="card-title"> Inventory Create Form </h6>
+            <h6 class="card-subtitle text-muted"> New Item </h6>
         </div>
         <div class="card-body">
-            <h2> Sample Dashboard </h2>
+            <form>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="niname">Name:</label>
+                            <input type="text" id="niname" name="niname" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="nisku">SKU:</label>
+                            <input type="text" id="nisku" name="nisku" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="nicat">Category:</label>
+                            <input type="text" id="nicat" name="nicat" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="ninoti">Notification emails:</label>
+                            <input type="text" id="niemail" name="niemail" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="nidesc">Description:</label>
+                            <textarea class="form-control" id="nidesc" name="nidesc" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="col col-md-auto">
+                        <div class="mb-3">
+                            <label for="niprice">Price:</label>
+                            <input class="form-control" type="text" id="niprice" name="niprice" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="nitax>">Tax:</label>
+                            <input class="form-control" type="text" id="nitax" name="nitax" />
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace aubh.ecashier.Pages
 {
-    public class PrivacyModel : PageModel
+    public class FacultyModel : PageModel
     {
-        private readonly ILogger<PrivacyModel> _logger;
+        private readonly ILogger<FacultyModel> _logger;
 
-        public PrivacyModel(ILogger<PrivacyModel> logger)
+        public FacultyModel(ILogger<FacultyModel> logger)
         {
             _logger = logger;
         }
