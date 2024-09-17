@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace aubh.ecashier
 {
@@ -7,12 +6,12 @@ namespace aubh.ecashier
     {
         public int Id { get; set; }
 
-        public ServiceEnum Options { get; set; }    
+        public ServiceEnum Options { get; set; }
     }
 
     public enum ServiceEnum
     {
-        [Display(Name ="Accomodation Fees")]
+        [Display(Name = "Accomodation Fees")]
         Accomodation,
 
         [Display(Name = "Books")]
