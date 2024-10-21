@@ -21,12 +21,15 @@ namespace eCashier.Pages.OrderPages
 
         public IActionResult OnGet()
         {
-        ViewData["CustomerId"] = new SelectList(_context.Customers, "Id", "Id");
+            ViewData["CustomerId"] = new SelectList(_context.Customers, "Id", "NameFull");
+            Items = _context.Items.ToList();
             return Page();
         }
 
         [BindProperty]
         public Order Order { get; set; } = default!;
+
+        public IList<Item> Items { get; set; } = default!;
 
         // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
