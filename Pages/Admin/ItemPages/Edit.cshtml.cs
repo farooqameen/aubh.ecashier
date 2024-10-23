@@ -30,13 +30,13 @@ namespace eCashier.Pages.ItemPages
                 return NotFound();
             }
 
-            var item =  await _context.Items.FirstOrDefaultAsync(m => m.Id == id);
+            var item = await _context.Items.FirstOrDefaultAsync(m => m.Id == id);
             if (item == null)
             {
                 return NotFound();
             }
             Item = item;
-           ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id");
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name");
             return Page();
         }
 

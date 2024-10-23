@@ -28,7 +28,9 @@ namespace eCashier.Pages.OrderPages
                 return NotFound();
             }
 
-            var order = await _context.Orders.FirstOrDefaultAsync(m => m.Id == id);
+            var order = await _context.Orders
+                .Include(m => m.Customer)
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (order == null)
             {
                 return NotFound();
