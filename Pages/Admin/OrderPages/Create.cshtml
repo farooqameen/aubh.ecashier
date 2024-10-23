@@ -15,7 +15,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Order.CustomerId" class="control-label"></label>
-                <select asp-for="Order.CustomerId" class ="form-control" asp-items="ViewBag.CustomerId"></select>
+                <select asp-for="Order.CustomerId" class="form-control" asp-items="ViewBag.CustomerId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Order.Reference" class="control-label"></label>
@@ -33,6 +33,15 @@
                 <span asp-validation-for="Order.InternalNote" class="text-danger"></span>
             </div>
             <div class="form-group">
+                @foreach (var item in Model.Items)
+                {
+                    <div>
+                        <input type="checkbox" name="selectedItems" value="@item.Id" />
+                        @item.Name
+                    </div>
+                }
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
@@ -44,5 +53,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

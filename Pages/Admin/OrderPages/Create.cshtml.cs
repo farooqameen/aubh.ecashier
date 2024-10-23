@@ -21,12 +21,18 @@ namespace eCashier.Pages.OrderPages
 
         public IActionResult OnGet()
         {
-        ViewData["CustomerId"] = new SelectList(_context.Customers, "Id", "Id");
+            ViewData["CustomerId"] = new SelectList(_context.Customers, "Id", "NameFull");
+            Items = _context.Items.ToList();
             return Page();
         }
 
         [BindProperty]
         public Order Order { get; set; } = default!;
+        [BindProperty]
+        public IList<Item> Items { get; set; } = default!;
+        [BindProperty]
+        public IList<int> SelectedItems { get; set; } = default!;
+
 
         // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
@@ -36,7 +42,16 @@ namespace eCashier.Pages.OrderPages
                 return Page();
             }
 
-            _context.Orders.Add(Order);
+            var order = Order;
+
+            _context.Orders.Add(order);
+
+            foreach (var itemId in SelectedItems)
+            {
+                var item = await _context.Items.FindAsync(itemId);
+                order.Items.Add(item);
+            }
+
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
