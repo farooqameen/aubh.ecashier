@@ -27,7 +27,8 @@ namespace eCashier.Pages
         public void OnGet()
         {
             var ItemId = _context.Items.Where(i => i.IsVisible);
-            ViewData["ItemId"] = new SelectList(ItemId, "Id", "Name");
+            var OptionList = new SelectList(ItemId, "Id", "Name");
+            ViewData["ItemId"] = OptionList;
         }
     }
 }
