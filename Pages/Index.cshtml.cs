@@ -30,5 +30,30 @@ namespace eCashier.Pages
             var OptionList = new SelectList(ItemId, "Id", "Name");
             ViewData["ItemId"] = OptionList;
         }
+
+        public async Task OnPost()
+        {
+            {
+                var paymentService = new OttuPaymentService(
+                    "https://sandbox.ottu.net",
+                    "VA81bYIs.D6RazRH3MemovqYmS83KJgHTRq1W5UbF"
+                    );
+
+                var request = new PaymentRequest
+                {
+                    Type = "payment_request",
+                    PgCodes = ["benefit-test"],
+                    Amount = 100,
+                    CurrencyCode = "BHD",
+                    CustomerPhone = "33333333"
+
+                };
+
+                var response = await paymentService.CreatePaymentSessionAsync(request);
+                var redirect = response.CheckoutUrl;
+
+                Response.Redirect(redirect);
+            }
+        }
     }
 }
