@@ -5,13 +5,196 @@
     Layout = "_Staff";
 }
 
+@* <div class="container-fluid">
+    <div class="col">
+        <div class="card">
+            <h6 class="font-weight-bold card-header">
+                Welcome
+            </h6>
+            <div class="card-body">
+                This is the main faculty page.
+            </div>
+        </div>
+    </div>
+</div> *@
+
 <div class="container-fluid">
-    <div class="card">
-        <h6 class="font-weight-bold card-header">
-            Welcome
-        </h6>
-        <div class="card-body">
-            This is the main faculty page.
+    <!-- Company Details Card -->
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Company Details</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h6>Company Name</h6>
+                            <p>American University of Bahrain</p>
+                        </div>
+                        <div class="col-md-3">
+                            <h6>Founded</h6>
+                            <p>2019</p>
+                        </div>
+                        <div class="col-md-3">
+                            <h6>Employees</h6>
+                            <p>500+</p>
+                        </div>
+                        <div class="col-md-3">
+                            <h6>Location</h6>
+                            <p>Kingdom of Bahrain</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Graph and Stats Row -->
+    <div class="row mb-4 d-flex">
+        <!-- Graph Card -->
+        <div class="col-md-8 d-flex">
+            <div class="card flex-fill">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Performance Metrics</h5>
+                </div>
+                <div class="card-body ">
+                    <canvas id="performanceChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Stats Card -->
+        <div class="col-md-4 d-flex">
+            <div class="card flex-fill">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Quick Stats</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <h6 class="text-muted">Revenue</h6>
+                        <p>$1.2M</p>
+                    </div>
+                    <div class="mb-3">
+                        <h6 class="text-muted">Growth</h6>
+                        <p>+25%</p>
+                    </div>
+                    <div>
+                        <h6 class="text-muted">Customers</h6>
+                        <p>1,500+</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Additional Information Cards -->
+    <div class="row mb-4 d-flex">
+        <!-- Recent Activities -->
+        <div class="col-md-6 d-flex">
+            <div class="card flex-fill">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Recent Activities</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">New client onboarding completed</li>
+                        <li class="list-group-item">Product update released</li>
+                        <li class="list-group-item">Team meeting scheduled</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Upcoming Tasks -->
+        <div class="col-md-6 d-flex">
+            <div class="card flex-fill">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Upcoming Tasks</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="task1">
+                                <label class="form-check-label" for="task1">
+                                    Quarterly review meeting
+                                </label>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="task2">
+                                <label class="form-check-label" for="task2">
+                                    Update documentation
+                                </label>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="task3">
+                                <label class="form-check-label" for="task3">
+                                    Client presentation
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+<script>
+
+    const canvas = document.getElementById("performanceChart");
+    const ctx = canvas.getContext("2d");
+
+    // Resize canvas to match the card's size
+    canvas.width = canvas.parentElement.clientWidth;
+    canvas.height = canvas.parentElement.clientHeight;
+
+    // Sample data for the line graph
+    const dataPoints = [10, 20, 15, 30, 25, 40, 35];
+    const dataLabels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"];
+
+    // Set up the line graph parameters
+    const padding = 20;
+    const rightPadding = 70; // Additional right padding
+    const maxDataValue = Math.max(...dataPoints);
+    const graphHeight = canvas.height - padding * 2;
+    const graphWidth = canvas.width - padding - rightPadding;
+    const stepX = graphWidth / (dataPoints.length - 1);
+    const scaleY = graphHeight / maxDataValue;
+
+    // Draw the line graph
+    ctx.beginPath();
+    ctx.moveTo(padding, canvas.height - padding - dataPoints[0] * scaleY);
+
+    for (let i = 1; i < dataPoints.length; i++) {
+        ctx.lineTo(padding + i * stepX, canvas.height - padding - dataPoints[i] * scaleY);
+    }
+
+    ctx.strokeStyle = "#007bff";
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    // Draw data points
+    ctx.fillStyle = "#007bff";
+    dataPoints.forEach((value, index) => {
+        const x = padding + index * stepX;
+        const y = canvas.height - padding - value * scaleY;
+        ctx.beginPath();
+        ctx.arc(x, y, 3, 0, Math.PI * 2);
+        ctx.fill();
+    });
+
+    // Draw x-axis labels
+    ctx.fillStyle = "#333";
+    ctx.font = "12px Arial";
+    dataLabels.forEach((label, index) => {
+        const x = padding + index * stepX;
+        const y = canvas.height - padding + 15;
+        ctx.fillText(label, x - 10, y);
+    });
+</script>
