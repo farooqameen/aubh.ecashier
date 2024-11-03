@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using eCashier.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using eCashier.Data;
-using eCashier.Models;
 
 namespace eCashier.Pages.OrderPages
 {
@@ -25,7 +20,7 @@ namespace eCashier.Pages.OrderPages
             Console.WriteLine(_context.Items);
             Items = _context.Items.ToList();
 
-            Options = _context.Items.Select (
+            Options = _context.Items.Select(
                 o => new SelectListItem
                 {
                     Value = o.Id.ToString(),

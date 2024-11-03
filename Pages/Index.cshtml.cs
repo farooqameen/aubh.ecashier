@@ -2,8 +2,6 @@ using eCashier.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using SQLitePCL;
 
 namespace eCashier.Pages
 {
@@ -31,29 +29,34 @@ namespace eCashier.Pages
             ViewData["ItemId"] = OptionList;
         }
 
-        public async Task OnPost()
+        public async Task<IActionResult> OnPostAsync()
         {
+            var paymentService = new OttuPaymentService(
+                "https://sandbox.ottu.net",
+                "VA81bYIs.D6RazRH3MemovqYmS83KJgHTRq1W5UbF"
+                );
+
+            var request = new PaymentRequest
             {
-                var paymentService = new OttuPaymentService(
-                    "https://sandbox.ottu.net",
-                    "VA81bYIs.D6RazRH3MemovqYmS83KJgHTRq1W5UbF"
-                    );
+                Type = "payment_request",
+                PgCodes = ["benefit-test"],
+                Amount = 100,
+                CurrencyCode = "BHD",
+                CustomerPhone = "33333333"
 
-                var request = new PaymentRequest
-                {
-                    Type = "payment_request",
-                    PgCodes = ["benefit-test"],
-                    Amount = 100,
-                    CurrencyCode = "BHD",
-                    CustomerPhone = "33333333"
+            };
 
-                };
+            var response = await paymentService.CreatePaymentSessionAsync(request);
 
-                var response = await paymentService.CreatePaymentSessionAsync(request);
-                var redirect = response.CheckoutUrl;
-
-                Response.Redirect(redirect);
+            if (!ModelState.IsValid)
+            {
+                return Page();
             }
+
+            HttpContext.Session.SetString("CustomerData", System.Text.Json.JsonSerializer.Serialize(Customer));
+
+            return RedirectToPage("./Summary");
+
         }
     }
 }

@@ -1,6 +1,5 @@
-﻿using Microsoft.DotNet.Scaffolding.Shared.CodeModifier.CodeChange;
+﻿using RestSharp;
 using System.Text.Json.Serialization;
-using RestSharp;
 
 namespace eCashier
 {
@@ -10,7 +9,7 @@ namespace eCashier
         private readonly string _baseUrl;
         private readonly RestClient _client;
 
-        public OttuPaymentService(string baseUrl,string apiKey)
+        public OttuPaymentService(string baseUrl, string apiKey)
         {
             _baseUrl = baseUrl.TrimEnd('/');
             _client = new RestClient(_baseUrl);

@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using eCashier.Models;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using eCashier.Data;
-using eCashier.Models;
 
 namespace eCashier.Pages.OrderPages
 {
@@ -19,7 +13,7 @@ namespace eCashier.Pages.OrderPages
             _context = context;
         }
 
-        public IList<Order> Order { get;set; } = default!;
+        public IList<Order> Order { get; set; } = default!;
 
         public async Task OnGetAsync()
         {
