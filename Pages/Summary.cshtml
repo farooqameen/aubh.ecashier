@@ -1,0 +1,21 @@
+﻿@page
+@model SummaryModel
+@{
+    ViewData["Title"] = "Summary";
+}
+
+<container>
+    <div class="card my-3">
+        <h6 class="font-weight-bold card-header">
+            Customer Information
+        </h6>
+        <div class="card-body">
+            <p class="card-title">@Model.Customer.FirstName @Model.Customer.LastName</p>
+            <p class="card-text">
+                <strong>Student ID:</strong> @Model.Customer.StudentId<br />
+                <strong>Email:</strong> @Model.Customer.Email<br />
+                <strong>Phone:</strong> @Model.Customer.Telephone<br />
+            </p>
+        </div>
+    </div>
+</container>

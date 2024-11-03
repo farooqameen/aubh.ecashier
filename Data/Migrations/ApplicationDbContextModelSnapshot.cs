@@ -260,6 +260,9 @@ namespace eCashier.Data.Migrations
                     b.Property<string>("Notes")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("StudentId")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Telephone")
                         .HasColumnType("nvarchar(max)");
 
