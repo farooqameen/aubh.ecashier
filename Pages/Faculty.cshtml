@@ -59,7 +59,9 @@
                     <h5 class="card-title mb-0">Performance Metrics</h5>
                 </div>
                 <div class="card-body ">
-                    <canvas id="performanceChart"></canvas>
+                    <div id="graph-container" class="position-relative" style="height: 400px;">
+                        <canvas id="performanceChart" class="w-100 h-100"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
@@ -146,55 +148,83 @@
 </div>
 
 <script>
+    class PerformanceGraph {
+        constructor(canvasId) {
+            this.canvas = document.getElementById(canvasId);
+            this.container = document.getElementById('graph-container');
+            this.ctx = this.canvas.getContext("2d");
+            this.dataPoints = [10, 20, 15, 30, 25, 40, 35];
+            this.dataLabels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"];
 
-    const canvas = document.getElementById("performanceChart");
-    const ctx = canvas.getContext("2d");
+            this.initializeGraph();
 
-    // Resize canvas to match the card's size
-    canvas.width = canvas.parentElement.clientWidth;
-    canvas.height = canvas.parentElement.clientHeight;
+            window.addEventListener('resize', () => {
+                this.initializeGraph();
+            });
+        }
 
-    // Sample data for the line graph
-    const dataPoints = [10, 20, 15, 30, 25, 40, 35];
-    const dataLabels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"];
+        initializeGraph() {
+            const rect = this.container.getBoundingClientRect();
+            const dpr = window.devicePixelRatio || 1;
+            this.canvas.width = rect.width * dpr;
+            this.canvas.height = rect.height * dpr;
+            this.ctx.scale(dpr, dpr);
 
-    // Set up the line graph parameters
-    const padding = 20;
-    const rightPadding = 70; // Additional right padding
-    const maxDataValue = Math.max(...dataPoints);
-    const graphHeight = canvas.height - padding * 2;
-    const graphWidth = canvas.width - padding - rightPadding;
-    const stepX = graphWidth / (dataPoints.length - 1);
-    const scaleY = graphHeight / maxDataValue;
+            this.canvas.style.width = `${rect.width}px`;
+            this.canvas.style.height = `${rect.height}px`;
 
-    // Draw the line graph
-    ctx.beginPath();
-    ctx.moveTo(padding, canvas.height - padding - dataPoints[0] * scaleY);
+            this.drawGraph();
+        }
 
-    for (let i = 1; i < dataPoints.length; i++) {
-        ctx.lineTo(padding + i * stepX, canvas.height - padding - dataPoints[i] * scaleY);
+        drawGraph() {
+            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+            const padding = 20;
+            const rightPadding = 70;
+            const maxDataValue = Math.max(...this.dataPoints);
+            const graphHeight = (this.canvas.height / window.devicePixelRatio) - padding * 2;
+            const graphWidth = (this.canvas.width / window.devicePixelRatio) - padding - rightPadding;
+            const stepX = graphWidth / (this.dataPoints.length - 1);
+            const scaleY = graphHeight / maxDataValue;
+
+            // Draw the line
+            this.ctx.beginPath();
+            this.ctx.moveTo(padding, (this.canvas.height / window.devicePixelRatio) - padding - this.dataPoints[0] * scaleY);
+
+            for (let i = 1; i < this.dataPoints.length; i++) {
+                this.ctx.lineTo(
+                    padding + i * stepX,
+                    (this.canvas.height / window.devicePixelRatio) - padding - this.dataPoints[i] * scaleY
+                );
+            }
+
+            // Using Bootstrap primary color
+            this.ctx.strokeStyle = "#0d6efd";
+            this.ctx.lineWidth = 2;
+            this.ctx.stroke();
+
+            // Draw data points
+            this.ctx.fillStyle = "#0d6efd";
+            this.dataPoints.forEach((value, index) => {
+                const x = padding + index * stepX;
+                const y = (this.canvas.height / window.devicePixelRatio) - padding - value * scaleY;
+
+                this.ctx.beginPath();
+                this.ctx.arc(x, y, 3, 0, Math.PI * 2);
+                this.ctx.fill();
+            });
+
+            // Draw x-axis labels
+            this.ctx.fillStyle = "#212529"; // Bootstrap dark color
+            this.ctx.font = "12px var(--bs-body-font-family)"; // Using Bootstrap font
+            this.dataLabels.forEach((label, index) => {
+                const x = padding + index * stepX;
+                const y = (this.canvas.height / window.devicePixelRatio) - padding + 15;
+                this.ctx.fillText(label, x - 10, y);
+            });
+        }
     }
 
-    ctx.strokeStyle = "#007bff";
-    ctx.lineWidth = 2;
-    ctx.stroke();
-
-    // Draw data points
-    ctx.fillStyle = "#007bff";
-    dataPoints.forEach((value, index) => {
-        const x = padding + index * stepX;
-        const y = canvas.height - padding - value * scaleY;
-        ctx.beginPath();
-        ctx.arc(x, y, 3, 0, Math.PI * 2);
-        ctx.fill();
-    });
-
-    // Draw x-axis labels
-    ctx.fillStyle = "#333";
-    ctx.font = "12px Arial";
-    dataLabels.forEach((label, index) => {
-        const x = padding + index * stepX;
-        const y = canvas.height - padding + 15;
-        ctx.fillText(label, x - 10, y);
-    });
+    // Initialize the graph
+    const graph = new PerformanceGraph("performanceChart");
 </script>
