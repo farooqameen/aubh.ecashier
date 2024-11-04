@@ -50,7 +50,7 @@
                 <div class="mb-3 col">
                     <label asp-for="Item.CategoryId" class="control-label">Select an item:</label>
                     <select id="itemSelect" asp-for="Item.CategoryId" class="form-control" asp-items="ViewBag.ItemId">
-                        <option value="">---</option>
+                        <option value="" disabled selected>No Item</option>
                     </select>
                 </div>
                 <div class="mb-3 col col-md-3">
