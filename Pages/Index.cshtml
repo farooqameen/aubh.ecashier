@@ -46,19 +46,17 @@
             </div>
         </div>
         <div class="card mb-3">
-            <div class="card-body">
-                <div class="mb-3">
-
-                    <!--<label for="item">Select an item: </label>-->
-                    @* <div>
-                    @Html.DropDownListFor(Model => Model.InventoryItem, new SelectList(Model.InventoryItem, "ID", "Name"))
-                    </div> *@
-
-                    @* Missing asp-for field
-                    <select class="form-select" asp-items=@(new SelectList(Model.InventoryItem, "Id", "Name"))></select> *@
-
+            <div class="card-body row">
+                <div class="mb-3 col">
                     <label asp-for="Item.CategoryId" class="control-label">Select an item:</label>
-                    <select asp-for="Item.CategoryId" class="form-control" asp-items="ViewBag.ItemId"></select>
+                    <select id="itemSelect" asp-for="Item.CategoryId" class="form-control" asp-items="ViewBag.ItemId">
+                        <option value="">---</option>
+                    </select>
+                </div>
+                <div class="mb-3 col col-md-3">
+                    <label for="price">Price:</label>
+                    <input id="price" class="form-control" asp-for="Item.Price" />
+                    <span asp-validation-for="Item.Price" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label for="note">Note:</label>
@@ -74,3 +72,30 @@
     </form>
 </div>
 
+@section Scripts {
+    <script>
+        
+        $(document).ready(function() {
+            $('#itemSelect').change(function() {
+                var selectedItem = $(this).val();
+                //console.log('selectedItem: ', selectedItem)
+                if (selectedItem) {
+                    $.get('/Index?handler=Price', {
+                        itemId: selectedItem
+                    }).done(function(data) {
+                        $('#price').val(data.price);
+                        //console.log("price: ", data)
+                        if (!data.allowAnyPrice) {
+                            $('#price').prop('readonly', true);
+                        } else {
+                            $('#price').prop('readonly', false);
+                        }
+                    });
+                } else {
+                    $('#price').val(null);
+                }
+            });
+        });
+    
+    </script>
+}
