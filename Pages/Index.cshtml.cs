@@ -1,4 +1,5 @@
 using eCashier.Models;
+using eCashier.Ottu;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -42,7 +43,10 @@ namespace eCashier.Pages
 
         public async Task<IActionResult> OnPostAsync()
         {
-            var paymentService = new OttuPaymentService(
+            int itemPrice = Item.Price;
+            String customerPhone = Customer.Telephone;
+
+            var paymentService = new PaymentService(
                 "https://sandbox.ottu.net",
                 "VA81bYIs.D6RazRH3MemovqYmS83KJgHTRq1W5UbF"
                 );
@@ -51,10 +55,9 @@ namespace eCashier.Pages
             {
                 Type = "payment_request",
                 PgCodes = ["benefit-test"],
-                Amount = 100,
+                Amount = itemPrice,
                 CurrencyCode = "BHD",
-                CustomerPhone = "33333333"
-
+                CustomerPhone = customerPhone
             };
 
             var response = await paymentService.CreatePaymentSessionAsync(request);
