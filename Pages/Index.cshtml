@@ -46,11 +46,9 @@
                     <select id="itemSelect" asp-for="Item.Id" class="form-control" asp-items="ViewBag.ItemId">
                         <option value="" disabled selected>No Item</option>
                     </select>
+                    <input type="hidden" asp-for="Item.Name" value="Item.Name" />
                     <span asp-validation-for="Item.Id" class="text-danger"></span>
                 </div>
-
-                <input type="hidden" asp-for="Item.Name" value="Item.Name"/>
-
                 <div class="mb-3 col col-md-3">
                     <label asp-for="Item.Price" for="price">Price:</label>
                     <input id="price" class="form-control" asp-for="Item.Price" readonly />

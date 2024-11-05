@@ -48,26 +48,16 @@ namespace eCashier.Pages
 
         public async Task<IActionResult> OnPostAsync()
         {
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-            var paymentService = new OttuPaymentService(
-=======
             if (!ModelState.IsValid)
             {
                 PopulateOptionList();
                 return Page();
             }
 
-=======
->>>>>>> 1e73dc4eb033299e45eb9abfc139ea9a032fa40b
             int itemPrice = Item.Price;
             String customerPhone = Customer.Telephone;
 
             var paymentService = new PaymentService(
-<<<<<<< HEAD
->>>>>>> Stashed changes
-=======
->>>>>>> 1e73dc4eb033299e45eb9abfc139ea9a032fa40b
                 "https://sandbox.ottu.net",
                 "VA81bYIs.D6RazRH3MemovqYmS83KJgHTRq1W5UbF"
                 );
