@@ -2,6 +2,7 @@ using eCashier.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace eCashier.Pages
 {
@@ -27,6 +28,16 @@ namespace eCashier.Pages
             var ItemId = _context.Items.Where(i => i.IsVisible);
             var OptionList = new SelectList(ItemId, "Id", "Name");
             ViewData["ItemId"] = OptionList;
+        }
+
+        public JsonResult OnGetPrice(int itemId)
+        {
+            var item = _context.Items.FirstOrDefault(i => i.Id == itemId);
+            return new JsonResult(new
+            {
+                price = item?.Price ?? 0,
+                allowAnyPrice = item?.AllowAnyPrice ?? false
+            });
         }
 
         public async Task<IActionResult> OnPostAsync()
