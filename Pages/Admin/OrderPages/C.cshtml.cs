@@ -28,13 +28,13 @@ namespace eCashier.Pages.OrderPages
         public IList<Item> Items { get; set; } = default!;
         [BindProperty]
         public IList<int> SelectedItems { get; set; } = default!;
-        [BindProperty]
         public SelectList ItemOptions { get; set; } = default!;
 
 
         // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
+            Console.WriteLine(ItemOptions);
             if (!ModelState.IsValid)
             {
                 return Page();
