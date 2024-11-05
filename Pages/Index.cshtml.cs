@@ -25,6 +25,11 @@ namespace eCashier.Pages
 
         public void OnGet()
         {
+            PopulateOptionList();
+        }
+
+        private void PopulateOptionList()
+        {
             var ItemId = _context.Items.Where(i => i.IsVisible);
             var OptionList = new SelectList(ItemId, "Id", "Name");
             ViewData["ItemId"] = OptionList;
@@ -42,7 +47,20 @@ namespace eCashier.Pages
 
         public async Task<IActionResult> OnPostAsync()
         {
+<<<<<<< Updated upstream
             var paymentService = new OttuPaymentService(
+=======
+            if (!ModelState.IsValid)
+            {
+                PopulateOptionList();
+                return Page();
+            }
+
+            int itemPrice = Item.Price;
+            String customerPhone = Customer.Telephone;
+
+            var paymentService = new PaymentService(
+>>>>>>> Stashed changes
                 "https://sandbox.ottu.net",
                 "VA81bYIs.D6RazRH3MemovqYmS83KJgHTRq1W5UbF"
                 );
@@ -59,16 +77,10 @@ namespace eCashier.Pages
 
             var response = await paymentService.CreatePaymentSessionAsync(request);
 
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
             HttpContext.Session.SetString("CustomerData", System.Text.Json.JsonSerializer.Serialize(Customer));
             HttpContext.Session.SetString("OttuData", System.Text.Json.JsonSerializer.Serialize(response));
 
             return RedirectToPage("./Summary");
-
         }
     }
 }

@@ -14,28 +14,32 @@
             <div class="card-body row">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group mb-3 col">
-                    <label for="fname">First name:</label>
+                    <label asp-for="Customer.FirstName" for="fname">First name:</label>
                     <input id="fname" class="form-control" asp-for="Customer.FirstName" />
                     <span asp-validation-for="Customer.FirstName" class="text-danger"></span>
                 </div>
                 <div class="mb-3 col">
-                    <label for="lname">Last name:</label>
+                    <label asp-for="Customer.LastName" for="lname">Last name:</label>
                     <input id="lname" class="form-control" asp-for="Customer.LastName" />
                     <span asp-validation-for="Customer.LastName" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
+<<<<<<< Updated upstream
                     @* make sure to change id and asp-for, not properly set *@
                     <label for="sid">Student ID:</label>
+=======
+                    <label asp-for="Customer.StudentId" for="sid">Student ID:</label>
+>>>>>>> Stashed changes
                     <input id="sid" class="form-control" asp-for="Customer.StudentId" />
                     <span asp-validation-for="Customer.StudentId" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
-                    <label for="email">Email:</label>
+                    <label asp-for="Customer.Email" for="email">Email:</label>
                     <input id="email" class="form-control" asp-for="Customer.Email" />
                     <span asp-validation-for="Customer.Email" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
-                    <label>Phone:</label><br />
+                    <label asp-for="Customer.Telephone">Phone:</label><br />
                     <input class="form-control" id="phone" asp-for="Customer.Telephone" />
                     <span asp-validation-for="Customer.Telephone" class="text-danger"></span>
                 </div>
@@ -44,18 +48,27 @@
         <div class="card mb-3">
             <div class="card-body row">
                 <div class="mb-3 col">
-                    <label asp-for="Item.CategoryId" class="control-label">Select an item:</label>
-                    <select id="itemSelect" asp-for="Item.CategoryId" class="form-control" asp-items="ViewBag.ItemId">
+                    <label asp-for="Item.Id" class="control-label">Select an item:</label>
+                    <select id="itemSelect" asp-for="Item.Id" class="form-control" asp-items="ViewBag.ItemId">
                         <option value="" disabled selected>No Item</option>
                     </select>
+                    <span asp-validation-for="Item.Id" class="text-danger"></span>
                 </div>
+
+                <input type="hidden" asp-for="Item.Name" value="Item.Name"/>
+
                 <div class="mb-3 col col-md-3">
+<<<<<<< Updated upstream
                     <label for="price">Price:</label>
                     <input id="price" class="form-control" asp-for="Item.Price" />
+=======
+                    <label asp-for="Item.Price" for="price">Price:</label>
+                    <input id="price" class="form-control" asp-for="Item.Price" readonly />
+>>>>>>> Stashed changes
                     <span asp-validation-for="Item.Price" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
-                    <label for="note">Note:</label>
+                    <label asp-for="Customer.Notes" for="note">Note:</label>
                     <textarea id="note" name="note" class="form-control" asp-for="Customer.Notes"></textarea>
                     <span asp-validation-for="Customer.Notes" class="text-danger"></span>
                 </div>
