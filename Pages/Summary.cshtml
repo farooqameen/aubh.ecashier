@@ -2,9 +2,10 @@
 @model SummaryModel
 @{
     ViewData["Title"] = "Summary";
+    Layout = "_Layout";
 }
 
-<container>
+<div class="container">
     <div class="card my-3">
         <h6 class="font-weight-bold card-header">
             Customer Information
@@ -15,6 +16,7 @@
                 <strong>Student ID:</strong> @Model.Customer.StudentId<br />
                 <strong>Email:</strong> @Model.Customer.Email<br />
                 <strong>Phone:</strong> @Model.Customer.Telephone<br />
+                <strong>Session:</strong> <a href="@Model.Payment.CheckoutUrl" target="_blank"> @Model.Payment.SessionId</a><br />
             </p>
         </div>
     </div>

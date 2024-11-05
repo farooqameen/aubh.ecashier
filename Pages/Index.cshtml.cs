@@ -65,6 +65,7 @@ namespace eCashier.Pages
             }
 
             HttpContext.Session.SetString("CustomerData", System.Text.Json.JsonSerializer.Serialize(Customer));
+            HttpContext.Session.SetString("OttuData", System.Text.Json.JsonSerializer.Serialize(response));
 
             return RedirectToPage("./Summary");
 
