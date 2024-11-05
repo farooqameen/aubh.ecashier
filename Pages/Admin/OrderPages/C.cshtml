@@ -1,11 +1,9 @@
 ﻿@page
-@model eCashier.Pages.OrderPages.CModel
+@model eCashier.Pages.OrderPages.C
 
 @{
     ViewData["Title"] = "Create";
 }
-
-@* SAMPLE PAGE AND SAMPLE MODEL, NOT TO BE USED *@
 
 <h1>Create</h1>
 
@@ -34,18 +32,18 @@
                 <input asp-for="Order.InternalNote" class="form-control" />
                 <span asp-validation-for="Order.InternalNote" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                @* asp-for is not correct, adjust for future *@
-                <select asp-for="Options" asp-items="Model.Options" class="form-control">Options:</select>
+            @* <div class="form-group">
+            @foreach (var item in Model.Items)
+            {
+            <div>
+            <input type="checkbox" name="selectedItems" value="@item.Id" />
+            @item.Name
             </div>
-            <div class="form-group">
-                @foreach (var item in Model.Items)
-                {
-                    <div>
-                        <input type="checkbox" name="selectedItems" value="@item.Id" />
-                        @item.Name
-                    </div>
-                }
+            }
+            </div> *@
+            <div class="form-group mb-3">
+                <label asp-for="Order.Items" class="control-label"></label>
+                <select name="selectedItems" asp-for="Order.Items" asp-items="Model.ItemOptions" class="js-example-basic-multiple form-control" multiple></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -58,8 +56,19 @@
     <a asp-page="Index">Back to List</a>
 </div>
 
+
+
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    @{
+        <script>
+            $('.js-example-basic-multiple').select2({
+                theme: 'bootstrap-5',
+                dropdownParent: $('.js-example-basic-multiple').parent(),
+                width: '100%',
+            });
+        </script>
     }
 }

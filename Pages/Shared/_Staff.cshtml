@@ -6,6 +6,8 @@
     <title>@ViewData["Title"] - eCashier</title>
     <link rel="icon" type="image/svg" href="/images/logo-icon.svg">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/eCashier.styles.css" asp-append-version="true" />
@@ -14,7 +16,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Faculty">
+                <a class="navbar-brand" asp-area="" asp-page="/Index">
                     <img src="/images/aubh_logo.png" height="100">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -41,20 +43,23 @@
             <div class="col-auto vh-100 bg-white border-end box-shadow">
                 <ul class="navbar-nav m-2">
                     <li class="nav-item p-2">
-                        <a class="btn nav-item link-dark" asp-page="/Admin/ItemPages/Index">Inventory</a>
-                    </li>
-                    <li class="nav-item p-2">
-                        <a class="btn nav-item link-dark" asp-page="/Admin/CustomerPages/Index">Customers</a>
+                        <a class="btn nav-item link-dark" asp-page="/Faculty">Dashboard</a>
                     </li>
                     <li class="nav-item p-2">
                         <a class="btn nav-item link-dark" asp-page="/Admin/OrderPages/Index">Orders</a>
                     </li>
                     <li class="nav-item p-2">
-                        <a class="btn nav-item link-dark" asp-page=>Users</a>
+                        <a class="btn nav-item link-dark" asp-page="/Admin/CustomerPages/Index">Customers</a>
+                    </li>
+                    <li class="nav-item p-2">
+                        <a class="btn nav-item link-dark" asp-page="/Admin/ItemPages/Index">Inventory</a>
                     </li>
                     <li class="nav-item p-2">
                         <a class="btn nav-item link-dark" asp-page="/Admin/CategoryPages/Index">Categories</a>
                     </li>
+                    @* <li class="nav-item p-2">
+                        <a class="btn nav-item link-dark" asp-page=>Users</a>
+                    </li> *@
                 </ul>
             </div>
             <div class="col mt-3">
@@ -73,7 +78,9 @@
         </div>
     </footer>
 
+    
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 

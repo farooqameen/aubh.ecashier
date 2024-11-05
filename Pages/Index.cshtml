@@ -24,8 +24,11 @@
                     <span asp-validation-for="Customer.LastName" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
+<<<<<<< HEAD
 <<<<<<< Updated upstream
                     @* make sure to change id and asp-for, not properly set *@
+=======
+>>>>>>> 1e73dc4eb033299e45eb9abfc139ea9a032fa40b
                     <label for="sid">Student ID:</label>
 =======
                     <label asp-for="Customer.StudentId" for="sid">Student ID:</label>
@@ -60,11 +63,15 @@
                 <div class="mb-3 col col-md-3">
 <<<<<<< Updated upstream
                     <label for="price">Price:</label>
+<<<<<<< HEAD
                     <input id="price" class="form-control" asp-for="Item.Price" />
 =======
                     <label asp-for="Item.Price" for="price">Price:</label>
                     <input id="price" class="form-control" asp-for="Item.Price" readonly />
 >>>>>>> Stashed changes
+=======
+                    <input id="price" class="form-control" asp-for="Item.Price" readonly />
+>>>>>>> 1e73dc4eb033299e45eb9abfc139ea9a032fa40b
                     <span asp-validation-for="Item.Price" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
@@ -82,7 +89,6 @@
 
 @section Scripts {
     <script>
-        
         $(document).ready(function() {
             $('#itemSelect').change(function() {
                 var selectedItem = $(this).val();
@@ -104,6 +110,5 @@
                 }
             });
         });
-    
     </script>
 }

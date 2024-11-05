@@ -5,11 +5,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace eCashier.Pages.OrderPages
 {
-    public class CModel : PageModel
+    public class C : PageModel
     {
         private readonly eCashier.Data.ApplicationDbContext _context;
 
-        public CModel(eCashier.Data.ApplicationDbContext context)
+        public C(eCashier.Data.ApplicationDbContext context)
         {
             _context = context;
         }
@@ -17,33 +17,24 @@ namespace eCashier.Pages.OrderPages
         public IActionResult OnGet()
         {
             ViewData["CustomerId"] = new SelectList(_context.Customers, "Id", "NameFull");
-            Console.WriteLine(_context.Items);
+            ItemOptions = new SelectList(_context.Items, "Id", "Name");
             Items = _context.Items.ToList();
-
-            Options = _context.Items.Select(
-                o => new SelectListItem
-                {
-                    Value = o.Id.ToString(),
-                    Text = o.Name,
-                }).ToList();
-
-            Console.WriteLine(Options);
-
             return Page();
         }
 
-        public List<SelectListItem> Options { get; set; } = default!;
         [BindProperty]
         public Order Order { get; set; } = default!;
         [BindProperty]
         public IList<Item> Items { get; set; } = default!;
         [BindProperty]
-        public List<int> SelectedItems { get; set; } = default!;
+        public IList<int> SelectedItems { get; set; } = default!;
+        public SelectList ItemOptions { get; set; } = default!;
 
 
         // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
+            Console.WriteLine(ItemOptions);
             if (!ModelState.IsValid)
             {
                 return Page();
