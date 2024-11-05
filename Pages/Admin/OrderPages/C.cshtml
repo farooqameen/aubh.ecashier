@@ -1,11 +1,9 @@
 ﻿@page
-@model eCashier.Pages.OrderPages.CModel
+@model eCashier.Pages.OrderPages.C
 
 @{
     ViewData["Title"] = "Create";
 }
-
-@* SAMPLE PAGE AND SAMPLE MODEL, NOT TO BE USED *@
 
 <h1>Create</h1>
 
@@ -35,10 +33,6 @@
                 <span asp-validation-for="Order.InternalNote" class="text-danger"></span>
             </div>
             <div class="form-group">
-                @* asp-for is not correct, adjust for future *@
-                <select asp-for="Options" asp-items="Model.Options" class="form-control">Options:</select>
-            </div>
-            <div class="form-group">
                 @foreach (var item in Model.Items)
                 {
                     <div>
@@ -46,6 +40,10 @@
                         @item.Name
                     </div>
                 }
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Order.Items" class="control-label"></label>
+                <select asp-for="Order.Items" asp-items="Model.ItemOptions" class="form-control js-example-basic-multiple" multiple></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -58,8 +56,17 @@
     <a asp-page="Index">Back to List</a>
 </div>
 
+
+
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    @{
+        <script>
+            $(document).ready(function () {
+                $('.js-example-basic-multiple').select2();
+            });
+        </script>
     }
 }
