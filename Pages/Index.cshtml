@@ -24,7 +24,6 @@
                     <span asp-validation-for="Customer.LastName" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
-                    @* make sure to change id and asp-for, not properly set *@
                     <label for="sid">Student ID:</label>
                     <input id="sid" class="form-control" asp-for="Customer.StudentId" />
                     <span asp-validation-for="Customer.StudentId" class="text-danger"></span>
@@ -51,7 +50,7 @@
                 </div>
                 <div class="mb-3 col col-md-3">
                     <label for="price">Price:</label>
-                    <input id="price" class="form-control" asp-for="Item.Price" />
+                    <input id="price" class="form-control" asp-for="Item.Price" readonly />
                     <span asp-validation-for="Item.Price" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
@@ -69,7 +68,6 @@
 
 @section Scripts {
     <script>
-        
         $(document).ready(function() {
             $('#itemSelect').change(function() {
                 var selectedItem = $(this).val();
@@ -91,6 +89,5 @@
                 }
             });
         });
-    
     </script>
 }
