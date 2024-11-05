@@ -17,32 +17,23 @@ namespace eCashier.Pages
         }
 
         public Customer Customer { get; set; } = default!;
+        public PaymentResponse Payment { get; set; } = default!;
 
         public IActionResult OnGet()
         {
             var customerData = HttpContext.Session.GetString("CustomerData");
+            var ottuData = HttpContext.Session.GetString("OttuData");
 
-            if (string.IsNullOrEmpty(customerData))
+            if (string.IsNullOrEmpty(customerData) || string.IsNullOrEmpty(ottuData))
             {
                 return RedirectToPage("./Index");
             }
 
             Customer = System.Text.Json.JsonSerializer.Deserialize<Customer>(customerData);
-            return Page();
-        }
-
-        public IActionResult OnPost()
-        {
-            var customerData = HttpContext.Session.GetString("CustomerData");
-
-            if (string.IsNullOrEmpty(customerData))
-            {
-                return RedirectToPage("./Index");
-            }
-
-            Customer = System.Text.Json.JsonSerializer.Deserialize<Customer>(customerData);
+            Payment = System.Text.Json.JsonSerializer.Deserialize<PaymentResponse>(ottuData);
 
             return Page();
         }
+
     }
 }

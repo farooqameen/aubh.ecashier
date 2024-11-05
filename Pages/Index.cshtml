@@ -2,12 +2,8 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
+    Layout = "_Layout";
 }
-
-@* <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div> *@
 
 <div class="container">
     <form method="post">
@@ -68,9 +64,7 @@
                 <div class="mb-3 d-flex justify-content-start">
                     <input type="submit" value="Checkout" class="btn btn-success" />
                 </div>
-
             </div>
         </div>
     </form>
 </div>
-

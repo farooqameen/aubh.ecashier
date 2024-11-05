@@ -61,7 +61,7 @@ namespace eCashier
         public string CheckoutUrl { get; set; }
 
         [JsonPropertyName("session_id")]
-        public string SessiontId { get; set; }
+        public string SessionId { get; set; }
 
         [JsonPropertyName("state")]
         public string State { get; set; }
