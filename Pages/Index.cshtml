@@ -18,22 +18,22 @@
                     <input id="fname" class="form-control" asp-for="Customer.FirstName" />
                     <span asp-validation-for="Customer.FirstName" class="text-danger"></span>
                 </div>
-                <div class="mb-3 col">
+                <div class="form-group mb-3 col">
                     <label asp-for="Customer.LastName" for="lname">Last name:</label>
                     <input id="lname" class="form-control" asp-for="Customer.LastName" />
                     <span asp-validation-for="Customer.LastName" class="text-danger"></span>
                 </div>
-                <div class="mb-3">
+                <div class="form-group mb-3">
                     <label asp-for="Customer.StudentId" for="sid">Student ID:</label>
                     <input id="sid" class="form-control" asp-for="Customer.StudentId" />
                     <span asp-validation-for="Customer.StudentId" class="text-danger"></span>
                 </div>
-                <div class="mb-3">
+                <div class="form-group mb-3">
                     <label asp-for="Customer.Email" for="email">Email:</label>
                     <input id="email" class="form-control" asp-for="Customer.Email" />
                     <span asp-validation-for="Customer.Email" class="text-danger"></span>
                 </div>
-                <div class="mb-3">
+                <div class="form-group mb-3">
                     <label asp-for="Customer.Telephone">Phone:</label><br />
                     <input class="form-control" id="phone" asp-for="Customer.Telephone" />
                     <span asp-validation-for="Customer.Telephone" class="text-danger"></span>
@@ -42,7 +42,7 @@
         </div>
         <div class="card mb-3">
             <div class="card-body row">
-                <div class="mb-3 col">
+                <div class="form-group mb-3 col">
                     <label asp-for="Item.Id" class="control-label">Select an item:</label>
                     <select name="selectedItems" id="selectedItems" asp-for="Item.Id" class="form-control" asp-items="ViewBag.ItemId">
                         <option value="" disabled selected>No Item</option>
@@ -50,12 +50,15 @@
                     <input type="hidden" asp-for="Item.Name" value="Item.Name" />
                     <span asp-validation-for="Item.Id" class="text-danger"></span>
                 </div>
-                <div class="mb-3 col col-md-3">
+                <div class="form-group mb-3 col col-md-3">
                     <label asp-for="Item.Price" for="price">Price:</label>
-                    <input id="price" class="form-control" asp-for="Item.Price" readonly />
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">BHD</span>
+                        <input id="price" class="form-control" asp-for="Item.Price" readonly />
+                    </div>
                     <span asp-validation-for="Item.Price" class="text-danger"></span>
                 </div>
-                <div class="mb-3">
+                <div class="form-group mb-3">
                     <label asp-for="Customer.Notes" for="note">Note:</label>
                     <textarea id="note" name="note" class="form-control" asp-for="Customer.Notes"></textarea>
                     <span asp-validation-for="Customer.Notes" class="text-danger"></span>
@@ -70,14 +73,14 @@
 
 @section Scripts {
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('#selectedItems').change(function () {
                 var selectedItem = $(this).val();
                 //console.log('selectedItem: ', selectedItem)
                 if (selectedItem) {
                     $.get('/Index?handler=Price', {
                         itemId: selectedItem
-                    }).done(function(data) {
+                    }).done(function (data) {
                         $('#price').val(data.price);
                         //console.log("price: ", data)
                         if (!data.allowAnyPrice) {
