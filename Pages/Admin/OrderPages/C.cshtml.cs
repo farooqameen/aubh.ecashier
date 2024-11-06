@@ -16,7 +16,7 @@ namespace eCashier.Pages.OrderPages
 
         public IActionResult OnGet()
         {
-            ViewData["CustomerId"] = new SelectList(_context.Customers, "Id", "NameFull");
+            ViewData["CustomerId"] = new SelectList(_context.Customers, "Id", "FullName");
             ItemOptions = new SelectList(_context.Items, "Id", "Name");
             Items = _context.Items.ToList();
             return Page();

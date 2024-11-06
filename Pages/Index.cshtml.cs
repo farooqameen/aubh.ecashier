@@ -23,6 +23,10 @@ namespace eCashier.Pages
         public Item Item { get; set; } = default!;
         [BindProperty]
         public Customer Customer { get; set; } = default!;
+        [BindProperty]
+        public Order Order { get; set; } = default!;
+        [BindProperty]
+        public IList<int> SelectedItems { get; set; } = default!;
 
         public void OnGet()
         {
@@ -76,7 +80,30 @@ namespace eCashier.Pages
             HttpContext.Session.SetString("CustomerData", System.Text.Json.JsonSerializer.Serialize(Customer));
             HttpContext.Session.SetString("OttuData", System.Text.Json.JsonSerializer.Serialize(response));
 
+            var existingCustomer = await _context.Customers.FirstOrDefaultAsync(c => c.Email == Customer.Email);
+
+            if (existingCustomer == null)
+            {
+                _context.Customers.Add(Customer);
+                Order.Customer = Customer;
+            }
+            else
+            {
+                Order.Customer = existingCustomer;
+            }
+
+            foreach (var itemId in SelectedItems)
+            {
+                var item = await _context.Items.FindAsync(itemId);
+                Order.Items.Add(item);
+            }
+
+            _context.Orders.Add(Order);
+            await _context.SaveChangesAsync();
+
             return RedirectToPage("./Summary");
         }
+
+       
     }
 }

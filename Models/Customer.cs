@@ -32,7 +32,7 @@ namespace eCashier.Models
 
         // Collection navigation
         public ICollection<Order> Orders { get; } = [];
-        public string NameFull
+        public string FullName
         {
             get { return FirstName + " " + LastName; }
         }

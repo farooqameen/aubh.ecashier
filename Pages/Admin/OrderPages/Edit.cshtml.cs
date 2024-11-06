@@ -31,7 +31,7 @@ namespace eCashier.Pages.OrderPages
                 return NotFound();
             }
             Order = order;
-            ViewData["CustomerId"] = new SelectList(_context.Customers, "Id", "Id");
+            ViewData["CustomerId"] = new SelectList(_context.Customers, "Id", "FullName");
             return Page();
         }
 

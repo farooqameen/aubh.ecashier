@@ -44,7 +44,7 @@
             <div class="card-body row">
                 <div class="mb-3 col">
                     <label asp-for="Item.Id" class="control-label">Select an item:</label>
-                    <select id="itemSelect" asp-for="Item.Id" class="form-control" asp-items="ViewBag.ItemId">
+                    <select name="selectedItems" id="selectedItems" asp-for="Item.Id" class="form-control" asp-items="ViewBag.ItemId">
                         <option value="" disabled selected>No Item</option>
                     </select>
                     <input type="hidden" asp-for="Item.Name" value="Item.Name" />
@@ -71,7 +71,7 @@
 @section Scripts {
     <script>
         $(document).ready(function() {
-            $('#itemSelect').change(function() {
+            $('#selectedItems').change(function () {
                 var selectedItem = $(this).val();
                 //console.log('selectedItem: ', selectedItem)
                 if (selectedItem) {
