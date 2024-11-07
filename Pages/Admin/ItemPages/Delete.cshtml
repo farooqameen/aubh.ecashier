@@ -5,72 +5,74 @@
     ViewData["Title"] = "Delete";
 }
 
-<h1>Delete</h1>
+<div class="card">
+    <h3 class="card-header">Delete</h3>
+    <div class="card-body">
+        <div>
+            <h4>Item</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Item.Name)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Item.Name)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Item.SKU)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Item.SKU)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Item.Category)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Item.Category.Id)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Item.Price)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Item.Price)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Item.Tax)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Item.Tax)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Item.NotificationEmails)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Item.NotificationEmails)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Item.Description)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Item.Description)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Item.AllowAnyPrice)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Item.AllowAnyPrice)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Item.IsVisible)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Item.IsVisible)
+                </dd>
+            </dl>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Item</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Item.Name)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Item.Name)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Item.SKU)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Item.SKU)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Item.Category)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Item.Category.Id)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Item.Price)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Item.Price)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Item.Tax)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Item.Tax)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Item.NotificationEmails)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Item.NotificationEmails)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Item.Description)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Item.Description)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Item.AllowAnyPrice)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Item.AllowAnyPrice)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Item.IsVisible)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Item.IsVisible)
-        </dd>
-    </dl>
-    
-    <form method="post">
-        <input type="hidden" asp-for="Item.Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-page="./Index">Back to List</a>
-    </form>
+            <form method="post">
+                <input type="hidden" asp-for="Item.Id" />
+                <input type="submit" value="Delete" class="btn btn-danger" /> |
+                <a asp-page="./Index">Back to List</a>
+            </form>
+        </div>
+    </div>
 </div>

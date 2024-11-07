@@ -5,55 +5,56 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<div class="card">
+    <h3 class="card-header">Create</h3>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Order.CustomerId" class="control-label">Customer Name</label>
+                        <select asp-for="Order.CustomerId" class="form-control" asp-items="ViewBag.CustomerId"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Order.Reference" class="control-label"></label>
+                        <input asp-for="Order.Reference" class="form-control" />
+                        <span asp-validation-for="Order.Reference" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Order.ExpiryDate" class="control-label"></label>
+                        <input asp-for="Order.ExpiryDate" class="form-control" />
+                        <span asp-validation-for="Order.ExpiryDate" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Order.InternalNote" class="control-label"></label>
+                        <input asp-for="Order.InternalNote" class="form-control" />
+                        <span asp-validation-for="Order.InternalNote" class="text-danger"></span>
+                    </div>
+                    @* <div class="form-group">
+                    @foreach (var item in Model.Items)
+                    {
+                    <div>
+                    <input type="checkbox" name="selectedItems" value="@item.Id" />
+                    @item.Name
+                    </div>
+                    }
+                    </div> *@
+                    <div class="form-group mb-3">
+                        <label asp-for="Order.Items" class="control-label"></label>
+                        <select name="selectedItems" asp-for="Order.Items" asp-items="Model.ItemOptions" class="js-example-basic-multiple form-control" multiple></select>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
 
-<h4>Order</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Order.CustomerId" class="control-label">Customer Name</label>
-                <select asp-for="Order.CustomerId" class="form-control" asp-items="ViewBag.CustomerId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="Order.Reference" class="control-label"></label>
-                <input asp-for="Order.Reference" class="form-control" />
-                <span asp-validation-for="Order.Reference" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Order.ExpiryDate" class="control-label"></label>
-                <input asp-for="Order.ExpiryDate" class="form-control" />
-                <span asp-validation-for="Order.ExpiryDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Order.InternalNote" class="control-label"></label>
-                <input asp-for="Order.InternalNote" class="form-control" />
-                <span asp-validation-for="Order.InternalNote" class="text-danger"></span>
-            </div>
-            @* <div class="form-group">
-            @foreach (var item in Model.Items)
-            {
-            <div>
-            <input type="checkbox" name="selectedItems" value="@item.Id" />
-            @item.Name
-            </div>
-            }
-            </div> *@
-            <div class="form-group mb-3">
-                <label asp-for="Order.Items" class="control-label"></label>
-                <select name="selectedItems" asp-for="Order.Items" asp-items="Model.ItemOptions" class="js-example-basic-multiple form-control" multiple></select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        <div>
+            <a asp-page="Index">Back to List</a>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-page="Index">Back to List</a>
 </div>
 
 

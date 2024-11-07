@@ -1,5 +1,4 @@
 ﻿using RestSharp;
-using System.Text.Json.Serialization;
 
 namespace eCashier.Ottu
 {

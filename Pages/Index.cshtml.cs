@@ -104,6 +104,6 @@ namespace eCashier.Pages
             return RedirectToPage("./Summary");
         }
 
-       
+
     }
 }

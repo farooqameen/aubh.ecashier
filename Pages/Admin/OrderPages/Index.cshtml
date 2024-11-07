@@ -5,60 +5,63 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Order[0].Customer)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Order[0].Items)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Order[0].Reference)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Order[0].ExpiryDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Order[0].InternalNote)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var order in Model.Order)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => order.Customer.FullName)
-                </td>
-                <td>
-                    @foreach (var item in order.Items)
-                    {
-                        <div>@Html.DisplayFor(modelItem => item.Name)</div>
-                    }
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => order.Reference)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => order.ExpiryDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => order.InternalNote)
-                </td>
-                <td>
-                    <a asp-page="./Edit" asp-route-id="@order.Id">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@order.Id">Details</a> |
-                    <a asp-page="./Delete" asp-route-id="@order.Id">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<div class="card">
+    <h3 class="card-header">Index</h3>
+    <div class="card-body">
+        <a class="btn btn-success mb-3" asp-page="Create">New order</a>
+        <table class="table">
+            <thead class="table-dark">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Order[0].Customer)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Order[0].Items)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Order[0].Reference)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Order[0].ExpiryDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Order[0].InternalNote)
+                    </th>
+                    <th>
+                        Actions
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in Model.Order)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => order.Customer.FullName)
+                        </td>
+                        <td>
+                            @foreach (var item in order.Items)
+                            {
+                                <div>@Html.DisplayFor(modelItem => item.Name)</div>
+                            }
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => order.Reference)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => order.ExpiryDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => order.InternalNote)
+                        </td>
+                        <td>
+                            <a class="btn btn-warning" asp-page="./Edit" asp-route-id="@order.Id">Edit</a>
+                            <a class="btn btn-primary" asp-page="./Details" asp-route-id="@order.Id">Details</a>
+                            <a class="btn btn-danger" asp-page="./Delete" asp-route-id="@order.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
