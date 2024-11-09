@@ -5,71 +5,79 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<div class="card">
+    <h3 class="card-header">Edit</h3>
+    <div class="card-body">
+        <h6>Item</h6>
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Item.Id" />
+                    <div class="form-group">
+                        <label asp-for="Item.Name" class="control-label"></label>
+                        <input asp-for="Item.Name" class="form-control" />
+                        <span asp-validation-for="Item.Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Item.SKU" class="control-label"></label>
+                        <input asp-for="Item.SKU" class="form-control" />
+                        <span asp-validation-for="Item.SKU" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Item.CategoryId" class="control-label">Category</label>
+                        <select asp-for="Item.CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                        <span asp-validation-for="Item.CategoryId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Item.Price" class="control-label"></label>
+                        <input asp-for="Item.Price" class="form-control" />
+                        <span asp-validation-for="Item.Price" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Item.Tax" class="control-label"></label>
+                        <input asp-for="Item.Tax" class="form-control" />
+                        <span asp-validation-for="Item.Tax" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Item.NotificationEmails" class="control-label"></label>
+                        <input asp-for="Item.NotificationEmails" class="form-control" />
+                        <span asp-validation-for="Item.NotificationEmails" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Item.Description" class="control-label"></label>
+                        <input asp-for="Item.Description" class="form-control" />
+                        <span asp-validation-for="Item.Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="Item.AllowAnyPrice" /> @Html.DisplayNameFor(model => model.Item.AllowAnyPrice)
+                        </label>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="Item.IsVisible" /> @Html.DisplayNameFor(model => model.Item.IsVisible)
+                        </label>
+                    </div>
+                    <div class="form-group mt-3">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
 
-<h4>Item</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Item.Id" />
-            <div class="form-group">
-                <label asp-for="Item.Name" class="control-label"></label>
-                <input asp-for="Item.Name" class="form-control" />
-                <span asp-validation-for="Item.Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Item.SKU" class="control-label"></label>
-                <input asp-for="Item.SKU" class="form-control" />
-                <span asp-validation-for="Item.SKU" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Item.CategoryId" class="control-label">Category</label>
-                <select asp-for="Item.CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
-                <span asp-validation-for="Item.CategoryId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Item.Price" class="control-label"></label>
-                <input asp-for="Item.Price" class="form-control" />
-                <span asp-validation-for="Item.Price" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Item.Tax" class="control-label"></label>
-                <input asp-for="Item.Tax" class="form-control" />
-                <span asp-validation-for="Item.Tax" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Item.NotificationEmails" class="control-label"></label>
-                <input asp-for="Item.NotificationEmails" class="form-control" />
-                <span asp-validation-for="Item.NotificationEmails" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Item.Description" class="control-label"></label>
-                <input asp-for="Item.Description" class="form-control" />
-                <span asp-validation-for="Item.Description" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Item.AllowAnyPrice" /> @Html.DisplayNameFor(model => model.Item.AllowAnyPrice)
-                </label>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Item.IsVisible" /> @Html.DisplayNameFor(model => model.Item.IsVisible)
-                </label>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+        <div>
+            <a asp-page="./Index">Back to List</a>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-page="./Index">Back to List</a>
-</div>
+
+
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
