@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json;
 
 namespace eCashier.Pages
 {
@@ -77,8 +78,10 @@ namespace eCashier.Pages
 
             var response = await paymentService.CreatePaymentSessionAsync(request);
 
-            HttpContext.Session.SetString("CustomerData", System.Text.Json.JsonSerializer.Serialize(Customer));
-            HttpContext.Session.SetString("OttuData", System.Text.Json.JsonSerializer.Serialize(response));
+            HttpContext.Session.SetString("CustomerData", JsonSerializer.Serialize(Customer));
+            HttpContext.Session.SetString("OttuData", JsonSerializer.Serialize(response));
+            //HttpContext.Session.SetString("ItemData", JsonSerializer.Serialize(SelectedItems));
+
 
             var existingCustomer = await _context.Customers.FirstOrDefaultAsync(c => c.Email == Customer.Email);
 

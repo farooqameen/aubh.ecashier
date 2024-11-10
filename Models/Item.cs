@@ -14,6 +14,7 @@ namespace eCashier.Models
         public int SKU { get; set; }
 
         [Required]
+        [Range(1, int.MaxValue)]
         public int Price { get; set; }
         [Required]
         public int Tax { get; set; }

@@ -2,6 +2,7 @@ using eCashier.Models;
 using eCashier.Ottu;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Text.Json;
 
 namespace eCashier.Pages
 {
@@ -19,19 +20,22 @@ namespace eCashier.Pages
 
         public Customer Customer { get; set; } = default!;
         public PaymentResponse Payment { get; set; } = default!;
+        public Item Item { get; set; } = default!;
 
         public IActionResult OnGet()
         {
             var customerData = HttpContext.Session.GetString("CustomerData");
             var ottuData = HttpContext.Session.GetString("OttuData");
+            var itemData = HttpContext.Session.GetString("ItemData");
 
             if (string.IsNullOrEmpty(customerData) || string.IsNullOrEmpty(ottuData))
             {
                 return RedirectToPage("./Index");
             }
 
-            Customer = System.Text.Json.JsonSerializer.Deserialize<Customer>(customerData);
-            Payment = System.Text.Json.JsonSerializer.Deserialize<PaymentResponse>(ottuData);
+            Customer = JsonSerializer.Deserialize<Customer>(customerData);
+            Payment = JsonSerializer.Deserialize<PaymentResponse>(ottuData);
+            //Item = JsonSerializer.Deserialize<Item>(itemData);
 
             return Page();
         }

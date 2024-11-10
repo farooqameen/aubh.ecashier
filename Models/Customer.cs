@@ -31,6 +31,8 @@ namespace eCashier.Models
 
         // Collection navigation
         public ICollection<Order> Orders { get; } = [];
+
+        [Display(Name = "Full Name")]
         public string FullName
         {
             get { return FirstName + " " + LastName; }

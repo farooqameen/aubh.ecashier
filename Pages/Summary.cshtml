@@ -5,7 +5,7 @@
     Layout = "_Layout";
 }
 
-<div class="container">
+@* <div class="container">
     <div class="card my-3">
         <h6 class="font-weight-bold card-header">
             Customer Information
@@ -20,4 +20,70 @@
             </p>
         </div>
     </div>
+</div> *@
+
+<div class="container">
+    <div class="card my-3">
+        <h6 class="card-header font-weight-bold">
+            Customer details
+        </h6>
+        <div class="card-body">
+            <dl>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Customer.FullName)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Customer.FullName)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Customer.StudentId)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Customer.StudentId)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Customer.Email)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Customer.Email)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Customer.Telephone)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Customer.Telephone)
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="card">
+        <h6 class="card-header font-weight-bold">
+            Order summary
+        </h6>
+        <div class="card-body">
+            <dl>
+                @* <dt>
+                    @Html.DisplayNameFor(model => model.Order.Items)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Order.Items)
+                </dd> *@
+                @* <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Payment.CheckoutUrl)
+                </dt> *@
+                @* <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Payment.CheckoutUrl)
+                </dd> *@
+                @* <dt>
+                    @Model.Item.Name
+                </dt>
+                <dd></dd> *@
+                <dd>
+                    <a class="btn btn-success" href="@Model.Payment.CheckoutUrl" target="_blank">Pay Now</a>
+                </dd>
+            </dl>
+        </div>
+    </div>
 </div>
+
