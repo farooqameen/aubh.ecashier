@@ -268,7 +268,7 @@ appropriate sizing.[]{#security-implementation .anchor}
 
 
 
-# 5. Reflections and Conclusion
+# 4. Reflections and Conclusion
 
 The overall progress of this project has been steady and consistent,
 with required implementations being added and tested on a weekly basis.
@@ -304,4 +304,4 @@ fear-paralysis over the long term, with much of the credit given to the
 gratification of creating a new feature or meeting functional
 requirements.
 
-# 6. References
+# 5. References
