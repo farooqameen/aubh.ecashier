@@ -1,64 +1,6 @@
-**Web-based Financial Management System**
-
-Farooq Ameen
-
-Information Technology (IT) Department
-
-American University of Bahrain (AUBH)
-
-November 9, 2024
-
-Author Note
-
-This project was requested by the Vice President of Finance and
-Administration at the American University of Bahrain (AUBH).
-
-This document is strictly private, confidential and personal to its
-recipients and should not be copied, distributed or reproduced in whole
-or in part.
-
-**[Table of Contents]{.underline}**
-
-[Executive Summary [3](#executive-summary)](#executive-summary)
-
-[1. Introduction [3](#introduction)](#introduction)
-
-[1.1 Background [3](#background)](#background)
-
-[1.2 Problem Statement [4](#problem-statement)](#problem-statement)
-
-[1.3 Project Objectives [4](#project-objectives)](#project-objectives)
-
-[1.4 Project Scope [4](#project-scope)](#project-scope)
-
-[2. Literature Review [5](#literature-review)](#literature-review)
-
-[2.1 Current Financial Management Systems
-[5](#current-financial-management-systems)](#current-financial-management-systems)
-
-[3. Methodology and Project Plan
-[6](#methodology-and-project-plan)](#methodology-and-project-plan)
-
-[3.1 Development Methodology
-[6](#development-methodology)](#development-methodology)
-
-[3.2 Technology Stack [7](#technology-stack)](#technology-stack)
-
-[4. Progress and Discussion
-[8](#security-implementation)](#security-implementation)
-
-[5. Conclusion and Recommendations
-[8](#reflections-and-conclusion)](#reflections-and-conclusion)
-
-[6. References [8](#references)](#references)
-
-**[\
-]{.underline}**
+# **Web-based Financial Management System**
 
 # Executive Summary
-
-\[Brief overview of the project, key achievements, and major outcomes in
-2-3 paragraphs\]
 
 This technical report details the development and implementation of a
 web-based financial management system, dubbed "eCashier", for the
@@ -324,63 +266,7 @@ appropriate sizing.[]{#security-implementation .anchor}
 
 # 3. Progress and Implementation
 
-<figure>
-<img src="media/image1.png" style="width:6.30689in;height:3.38995in"
-alt="A screenshot of a computer Description automatically generated" />
-<figcaption><p>: Landing page</p></figcaption>
-</figure>
 
-<figure>
-<img src="media/image2.png" style="width:6.34179in;height:3.40872in" />
-<figcaption><p>: Landing page with user input</p></figcaption>
-</figure>
-
-<figure>
-<img src="media/image3.png" style="width:6.5in;height:3.49375in" />
-<figcaption><p>: Summary</p></figcaption>
-</figure>
-
-<figure>
-<img src="media/image4.png" style="width:6.5in;height:3.49375in"
-alt="A screenshot of a computer Description automatically generated" />
-<figcaption><p>: Payment gateway</p></figcaption>
-</figure>
-
-<figure>
-<img src="media/image5.png" style="width:6.5in;height:3.49375in"
-alt="A screenshot of a computer Description automatically generated" />
-<figcaption><p>: Faculty login</p></figcaption>
-</figure>
-
-<figure>
-<img src="media/image6.png" style="width:6.5in;height:3.49375in"
-alt="A screen shot of a graph Description automatically generated" />
-<figcaption><p>: Dashboard</p></figcaption>
-</figure>
-
-<figure>
-<img src="media/image7.png" style="width:6.5in;height:3.49375in"
-alt="A screenshot of a computer Description automatically generated" />
-<figcaption><p>: Orders</p></figcaption>
-</figure>
-
-<figure>
-<img src="media/image8.png" style="width:6.5in;height:3.49375in"
-alt="A screenshot of a computer Description automatically generated" />
-<figcaption><p>: Inventory items</p></figcaption>
-</figure>
-
-<figure>
-<img src="media/image9.png" style="width:6.5in;height:3.49375in"
-alt="A screenshot of a computer Description automatically generated" />
-<figcaption><p>: Customer creation</p></figcaption>
-</figure>
-
-<figure>
-<img src="media/image10.png" style="width:6.5in;height:3.49375in"
-alt="A screenshot of a computer Description automatically generated" />
-<figcaption><p>: Item details</p></figcaption>
-</figure>
 
 # 5. Reflections and Conclusion
 
