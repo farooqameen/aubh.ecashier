@@ -27,6 +27,9 @@
                     <th>
                         @Html.DisplayNameFor(model => model.Order[0].InternalNote)
                     </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Order[0].CheckoutUrl)
+                    </th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -53,6 +56,9 @@
                             @Html.DisplayFor(modelItem => order.InternalNote)
                         </td>
                         <td>
+                            <a class="btn btn-success" href="@Html.DisplayFor(modelItem => order.CheckoutUrl)" target="_blank"></a>
+                        </td>
+                        <td>
                             <a class="btn btn-warning" asp-page="./Edit" asp-route-id="@order.Id">Edit</a>
                             <a class="btn btn-primary" asp-page="./Details" asp-route-id="@order.Id">Details</a>
                             <a class="btn btn-danger" asp-page="./Delete" asp-route-id="@order.Id">Delete</a>
@@ -63,3 +69,9 @@
         </table>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+
+    </script>
+}

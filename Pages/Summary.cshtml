@@ -75,11 +75,19 @@
                 @* <dd class="col-sm-10">
                 @Html.DisplayFor(model => model.Payment.CheckoutUrl)
                 </dd> *@
-                @* <dt>
-                    @Model.Item.Name
+                <dt>
+                    @Html.DisplayNameFor(model => model.Item.Name)
                 </dt>
-                <dd></dd> *@
                 <dd>
+                    @Html.DisplayFor(model => model.Item.Name)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Item.Price)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Item.Price) BHD
+                </dd>
+                <dd class="mt-3">
                     <a class="btn btn-success" href="@Model.Payment.CheckoutUrl" target="_blank">Pay Now</a>
                 </dd>
             </dl>

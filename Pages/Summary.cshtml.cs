@@ -20,13 +20,15 @@ namespace eCashier.Pages
 
         public Customer Customer { get; set; } = default!;
         public PaymentResponse Payment { get; set; } = default!;
+        public IList<int> SelectedItems { get; set; } = default!;
         public Item Item { get; set; } = default!;
 
-        public IActionResult OnGet()
+        public async Task<IActionResult> OnGetAsync()
         {
             var customerData = HttpContext.Session.GetString("CustomerData");
             var ottuData = HttpContext.Session.GetString("OttuData");
             var itemData = HttpContext.Session.GetString("ItemData");
+            var itemPrice = HttpContext.Session.GetString("PriceData");
 
             if (string.IsNullOrEmpty(customerData) || string.IsNullOrEmpty(ottuData))
             {
@@ -35,7 +37,15 @@ namespace eCashier.Pages
 
             Customer = JsonSerializer.Deserialize<Customer>(customerData);
             Payment = JsonSerializer.Deserialize<PaymentResponse>(ottuData);
-            //Item = JsonSerializer.Deserialize<Item>(itemData);
+            SelectedItems = JsonSerializer.Deserialize<IList<int>>(itemData);
+
+            foreach (var itemId in SelectedItems)
+            {
+                var item = await _context.Items.FindAsync(itemId);
+                Item = item;
+            }
+
+            Item.Price = JsonSerializer.Deserialize<int>(itemPrice);
 
             return Page();
         }

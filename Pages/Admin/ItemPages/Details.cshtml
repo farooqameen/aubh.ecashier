@@ -74,12 +74,13 @@
                 </dd> *@
             </dl>
         </div>
+        <div>
+            <a class="btn btn-warning" asp-page="./Edit" asp-route-id="@Model.Item.Id">Edit</a> |
+            <a asp-page="./Index">Back to List</a>
+        </div>
     </div>
 </div>
 
 
 
-<div>
-    <a class="btn btn-warning" asp-page="./Edit" asp-route-id="@Model.Item.Id">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
-</div>
+

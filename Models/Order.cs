@@ -14,6 +14,9 @@ namespace eCashier.Models
 
         [Display(Name = "Internal Note")]
         public string InternalNote { get; set; }
+
+        [Display(Name = "Checkout URL")]
+        public string CheckoutUrl { get; set; }
         public List<Item> Items { get; } = [];
     }
 }

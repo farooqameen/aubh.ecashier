@@ -78,9 +78,12 @@ namespace eCashier.Pages
 
             var response = await paymentService.CreatePaymentSessionAsync(request);
 
+            Order.CheckoutUrl = response.CheckoutUrl;
+
             HttpContext.Session.SetString("CustomerData", JsonSerializer.Serialize(Customer));
             HttpContext.Session.SetString("OttuData", JsonSerializer.Serialize(response));
-            //HttpContext.Session.SetString("ItemData", JsonSerializer.Serialize(SelectedItems));
+            HttpContext.Session.SetString("ItemData", JsonSerializer.Serialize(SelectedItems));
+            HttpContext.Session.SetString("PriceData", JsonSerializer.Serialize(itemPrice));
 
 
             var existingCustomer = await _context.Customers.FirstOrDefaultAsync(c => c.Email == Customer.Email);
