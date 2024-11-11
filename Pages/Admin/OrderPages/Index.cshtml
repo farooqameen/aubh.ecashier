@@ -56,7 +56,7 @@
                             @Html.DisplayFor(modelItem => order.InternalNote)
                         </td>
                         <td>
-                            <a class="btn btn-success" href="@Html.DisplayFor(modelItem => order.CheckoutUrl)" target="_blank"></a>
+                            <a class="btn btn-outline-secondary js-copy-btn">@Html.DisplayFor(modelItem => order.CheckoutUrl)</a>
                         </td>
                         <td>
                             <a class="btn btn-warning" asp-page="./Edit" asp-route-id="@order.Id">Edit</a>
@@ -72,6 +72,72 @@
 
 @section Scripts {
     <script>
+        function fallbackCopyTextToClipboard(text, button) {
+            var textArea = document.createElement("textarea");
+            textArea.value = text;
 
+            // Avoid scrolling to bottom
+            textArea.style.top = "0";
+            textArea.style.left = "0";
+            textArea.style.position = "fixed";
+
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+
+            try {
+                var successful = document.execCommand('copy');
+                var msg = successful ? 'successful' : 'unsuccessful';
+                console.log('Fallback: Copying text command was ' + msg);
+                if (successful) {
+                    updateButtonText(button);
+                }
+            } catch (err) {
+                console.error('Fallback: Oops, unable to copy', err);
+            }
+
+            document.body.removeChild(textArea);
+        }
+
+        function copyTextToClipboard(text, button) {
+            if (!navigator.clipboard) {
+                fallbackCopyTextToClipboard(text, button);
+                return;
+            }
+            navigator.clipboard.writeText(text).then(function () {
+                console.log('Async: Copying to clipboard was successful!');
+                updateButtonText(button);
+            }, function (err) {
+                console.error('Async: Could not copy text: ', err);
+            });
+        }
+
+        function updateButtonText(button) {
+            button.textContent = 'Copied!';
+
+            setTimeout(() => {
+                button.textContent = 'Click to copy';
+            }, 2000);
+        }
+
+        // Wait for the DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            // Find all copy buttons
+            document.querySelectorAll('.js-copy-btn').forEach(button => {
+                // Store the original URL as a data attribute
+                const originalUrl = button.textContent.trim();
+                button.setAttribute('data-url', originalUrl);
+
+                // Set initial text
+                button.textContent = 'Click to copy';
+
+                // Add click handler
+                button.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    const urlToCopy = this.getAttribute('data-url');
+                    copyTextToClipboard(urlToCopy, this);
+                });
+            });
+        });
     </script>
 }
