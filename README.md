@@ -264,11 +264,11 @@ formats. Given the variety of web-capable devices, consistent formatting
 can be achieved through the addition of complimentary breakpoints and
 appropriate sizing.[]{#security-implementation .anchor}
 
-# 3. Progress and Implementation
+# 4. Progress and Implementation
 
 
 
-# 4. Reflections and Conclusion
+# 5. Reflections and Conclusion
 
 The overall progress of this project has been steady and consistent,
 with required implementations being added and tested on a weekly basis.
