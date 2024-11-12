@@ -43,19 +43,19 @@
             <div class="col-auto vh-100 bg-white border-end box-shadow">
                 <ul class="navbar-nav m-2">
                     <li class="nav-item p-2">
-                        <a class="btn nav-item link-dark" asp-page="/Faculty">Dashboard</a>
+                        <a name="nav" class="btn btn-primary nav-item" asp-page="/Faculty">Dashboard</a>
                     </li>
                     <li class="nav-item p-2">
-                        <a class="btn nav-item link-dark" asp-page="/Admin/OrderPages/Index">Orders</a>
+                        <a name="nav" class="btn nav-item" asp-page="/Admin/OrderPages/Index">Orders</a>
                     </li>
                     <li class="nav-item p-2">
-                        <a class="btn nav-item link-dark" asp-page="/Admin/CustomerPages/Index">Customers</a>
+                        <a name="nav" class="btn nav-item" asp-page="/Admin/CustomerPages/Index">Customers</a>
                     </li>
                     <li class="nav-item p-2">
-                        <a class="btn nav-item link-dark" asp-page="/Admin/ItemPages/Index">Inventory</a>
+                        <a name="nav" class="btn nav-item" asp-page="/Admin/ItemPages/Index">Inventory</a>
                     </li>
                     <li class="nav-item p-2">
-                        <a class="btn nav-item link-dark" asp-page="/Admin/CategoryPages/Index">Categories</a>
+                        <a name="nav" class="btn nav-item" asp-page="/Admin/CategoryPages/Index">Categories</a>
                     </li>
                     @* <li class="nav-item p-2">
                         <a class="btn nav-item link-dark" asp-page=>Users</a>
@@ -83,6 +83,7 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/sidebar.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
