@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme-value="dark">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,32 +9,25 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@24.5.0/build/css/intlTelInput.css" />
 
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/eCashier.styles.css" asp-append-version="true" />
+    @* <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" /> *@
 </head>
-<body>
+<body class="bg-light">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">
-                    <img src="/images/aubh_logo.png" height="100">
-                </a>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
-                    <h1>eCashier</h1>
+                <div class= "navbar-brand d-flex">
+                    <h4>American University of Bahrain</h4>
+                </div>
+                <div class="ms-auto">
+                    <h4>eCashier</h4>
                 </div>
             </div>
         </nav>
     </header>
-    <main role="main" class="pb-3">
+
+    <main role="main">
         @RenderBody()
     </main>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - eCashier - @* <a href="https://github.com/farooqameen" target="_blank">About</a> *@
-            <a href="/Faculty">Faculty</a>
-        </div>
-    </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
