@@ -25,7 +25,7 @@
                         @Html.DisplayNameFor(model => model.Order[0].Items)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Order[0].ExpiryDate)
+                        @Html.DisplayNameFor(model => model.Order[0].CreatedOn)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Order[0].InternalNote)
@@ -57,7 +57,7 @@
                         </td>
                         
                         <td>
-                            @Html.DisplayFor(modelItem => order.ExpiryDate)
+                            @Html.DisplayFor(modelItem => order.CreatedOn)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => order.InternalNote)
