@@ -14,6 +14,7 @@ namespace eCashier.Pages.OrderPages
         }
 
         public IList<Order> Order { get; set; } = default!;
+        public IList<ItemOrder> ItemOrders { get; set; } = default!;
 
         public async Task OnGetAsync()
         {
