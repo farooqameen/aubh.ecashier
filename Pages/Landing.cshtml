@@ -1,0 +1,118 @@
+﻿@page
+@model LandingModel
+@{
+    ViewData["Title"] = "Home page";
+    Layout = "_Landing";
+}
+<style>
+    .iti {
+        display: block;
+        width: 100%;
+    }
+</style>
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <h4 class="mb-3">Secure Payment</h4>
+                    <p class="text-muted mb-4">Please fill in your information to complete the payment</p>
+                    <form method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label asp-for="Customer.FirstName" for="firstName" class="form-label">First Name</label>
+                                <input asp-for="Customer.FirstName" type="text" class="form-control" id="firstName" placeholder="Enter your first name">
+                                <span asp-validation-for="Customer.FirstName" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="Customer.LastName" for="lastName" class="form-label">Last Name</label>
+                                <input asp-for="Customer.LastName" type="text" class="form-control" id="lastName" placeholder="Enter your last name">
+                                <span asp-validation-for="Customer.LastName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Customer.StudentId" for="studentId" class="form-label">Student ID</label>
+                            <input asp-for="Customer.StudentId" type="text" class="form-control" id="studentId" placeholder="Enter your student ID">
+                            <span asp-validation-for="Customer.StudentId" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Customer.Email" for="email" class="form-label">Email</label>
+                            <input asp-for="Customer.Email" type="email" class="form-control" id="email" placeholder="Enter your email">
+                            <span asp-validation-for="Customer.Email" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Customer.Telephone" for="phone" class="form-label">Phone Number</label><br>
+                            <input asp-for="Customer.Telephone" type="tel" class="form-control" id="phone">
+                            <span asp-validation-for="Customer.Telephone" class="text-danger"></span>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label asp-for="Item.Id" for="item" class="form-label">Select Item</label>
+                                <select name="selectedItems" id="selectedItems" asp-for="Item.Id" class="form-control" asp-items="ViewBag.ItemId">
+                                    <option value="" disabled selected>Select an item</option>
+                                </select>
+                                <input type="hidden" asp-for="Item.Name" value="Item.Name" />
+                                <span asp-validation-for="Item.Id" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="Item.Price" for="amount" class="form-label">Amount (BHD)</label>
+                                <input asp-for="Item.Price" type="number" class="form-control" id="amount" placeholder="0.000" readonly>
+                                <span asp-validation-for="Item.Price" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label asp-for="Customer.Notes" for="note" class="form-label">Note (Optional)</label>
+                            <textarea asp-for="Customer.Notes" class="form-control" id="note" rows="3" placeholder="Add any additional information"></textarea>
+                            <span asp-validation-for="Customer.Notes" class="text-danger"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-dark w-100 py-2 mb-3">
+                            <i class="bi bi-lock"></i> Proceed to Secure Checkout
+                        </button>
+
+                        <div class="text-center text-muted">
+                            <small>
+                                <span class="me-3">🔒 Secure Payment</span>
+                                <span>🔐 SSL Encrypted</span>
+                            </small>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            @* <div class="text-center mt-4">
+                <small class="text-muted">© 2024 American University of Bahrain - eCashier System</small>
+            </div> *@
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#selectedItems').change(function () {
+                var selectedItem = $(this).val();
+                //console.log('selectedItem: ', selectedItem)
+                if (selectedItem) {
+                    $.get('/Landing?handler=Price', {
+                        itemId: selectedItem
+                    }).done(function (data) {
+                        $('#amount').val(data.price);
+                        //console.log("price: ", data)
+                        if (!data.allowAnyPrice) {
+                            $('#amount').prop('readonly', true);
+                        } else {
+                            $('#amount').prop('readonly', false);
+                        }
+                    });
+                } else {
+                    $('#amount').val(null);
+                }
+            });
+        });
+    </script>
+}
+
+
