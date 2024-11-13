@@ -22,7 +22,11 @@ namespace eCashier.Models
 
         [Display(Name = "Notification Emails")]
         public string NotificationEmails { get; set; }
-        public string Description { get; set; }
+
+        [Display(Name = "Internal Description")]
+        public string InternalDescription { get; set; }
+        [Display(Name = "External Description")]
+        public string ExternalDescription { get; set; }
 
         [Display(Name = "Any price?")]
         public bool AllowAnyPrice { get; set; }
