@@ -34,5 +34,8 @@ namespace eCashier.Models
         [Display(Name = "Visible?")]
         public bool IsVisible { get; set; }
         public List<Order> Orders { get; } = [];
+
+        //Navigation to join table
+        public List<ItemOrder> ItemOrders { get; } = [];
     }
 }

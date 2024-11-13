@@ -21,6 +21,7 @@ namespace eCashier.Pages.OrderPages
             Order = await _context.Orders
                 .Include(o => o.Customer)
                 .Include(o => o.Items)
+                .Include(o => o.ItemOrders)
                 .ToListAsync();
         }
     }

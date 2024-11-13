@@ -21,5 +21,8 @@ namespace eCashier.Models
         [Display(Name = "Checkout URL")]
         public string CheckoutUrl { get; set; }
         public List<Item> Items { get; } = [];
+
+        //Navigation to join table
+        public List<ItemOrder> ItemOrders { get; } = [];
     }
 }
