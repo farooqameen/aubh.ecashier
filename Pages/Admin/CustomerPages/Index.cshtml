@@ -5,6 +5,13 @@
     ViewData["Title"] = "Index";
 }
 
+<style>
+    a {
+        color: inherit;
+        text-decoration: inherit;
+    }
+</style>
+
 <div class="card">
     <h3 class="card-header">Index</h3>
     <div class="card-body">
@@ -13,19 +20,19 @@
             <thead class="table-dark">
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.Customer[0].FirstName)
+                        <a class="" asp-route-sortOrder="FirstName">@Html.DisplayNameFor(model => model.Customer[0].FirstName)</a>
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Customer[0].LastName)
+                        <a class="" asp-route-sortOrder="LastName">@Html.DisplayNameFor(model => model.Customer[0].LastName)</a>
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Customer[0].StudentId)
+                        <a class="" asp-route-sortOrder="StudentId">@Html.DisplayNameFor(model => model.Customer[0].StudentId)</a>
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Customer[0].Email)
+                        <a class="" asp-route-sortOrder="Email">@Html.DisplayNameFor(model => model.Customer[0].Email)</a>
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Customer[0].Telephone)
+                        <a class="" asp-route-sortOrder="Telephone">@Html.DisplayNameFor(model => model.Customer[0].Telephone)</a>
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Customer[0].Notes)

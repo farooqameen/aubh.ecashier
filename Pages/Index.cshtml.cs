@@ -29,9 +29,10 @@ namespace eCashier.Pages
         [BindProperty]
         public IList<int> SelectedItems { get; set; } = default!;
 
-        public void OnGet()
+        public void OnGetAsync()
         {
             PopulateOptionList();
+
         }
 
         //Create an OptionList for the dropdown
