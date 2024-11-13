@@ -34,6 +34,7 @@ namespace eCashier.Pages
             PopulateOptionList();
         }
 
+        //Create an OptionList for the dropdown
         private void PopulateOptionList()
         {
             var ItemId = _context.Items.Where(i => i.IsVisible);
@@ -41,6 +42,7 @@ namespace eCashier.Pages
             ViewData["ItemId"] = OptionList;
         }
 
+        //Pull data from AJAX
         public JsonResult OnGetPrice(int itemId)
         {
             var item = _context.Items.FirstOrDefault(i => i.Id == itemId);
@@ -53,6 +55,7 @@ namespace eCashier.Pages
 
         public async Task<IActionResult> OnPostAsync()
         {
+            //For invalid submissions, refresh the list
             if (!ModelState.IsValid)
             {
                 PopulateOptionList();
@@ -80,12 +83,13 @@ namespace eCashier.Pages
 
             Order.CheckoutUrl = response.CheckoutUrl;
 
+            //Serializing into JSON for the next page
             HttpContext.Session.SetString("CustomerData", JsonSerializer.Serialize(Customer));
             HttpContext.Session.SetString("OttuData", JsonSerializer.Serialize(response));
             HttpContext.Session.SetString("ItemData", JsonSerializer.Serialize(SelectedItems));
             HttpContext.Session.SetString("PriceData", JsonSerializer.Serialize(itemPrice));
 
-
+            //Primary key
             var existingCustomer = await _context.Customers.FirstOrDefaultAsync(c => c.Email == Customer.Email);
 
             if (existingCustomer == null)

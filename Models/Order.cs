@@ -9,6 +9,9 @@ namespace eCashier.Models
         public Customer Customer { get; set; } = null!; // required reference
         public int Reference { get; set; }
 
+        [Display(Name = "Created on")]
+        public DateTime CreatedOn { get; set; } = DateTime.Now;
+
         [Display(Name = "Expiry Date")]
         public DateTime? ExpiryDate { get; set; }
 

@@ -16,6 +16,7 @@ namespace eCashier.Models
         [Required]
         [Range(1, int.MaxValue)]
         public int Price { get; set; }
+
         [Required]
         public int Tax { get; set; }
 
@@ -28,7 +29,6 @@ namespace eCashier.Models
 
         [Display(Name = "Visible?")]
         public bool IsVisible { get; set; }
-
         public List<Order> Orders { get; } = [];
     }
 }
