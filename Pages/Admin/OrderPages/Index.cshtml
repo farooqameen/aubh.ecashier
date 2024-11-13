@@ -13,13 +13,16 @@
             <thead class="table-dark">
                 <tr>
                     <th>
+                        @Html.DisplayNameFor(model => model.Order[0].Reference)
+                    </th>
+                    <th>
                         @Html.DisplayNameFor(model => model.Order[0].Customer)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Order[0].Items)
+                        @Html.DisplayNameFor(model => model.Order[0].Customer.StudentId)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Order[0].Reference)
+                        @Html.DisplayNameFor(model => model.Order[0].Items)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Order[0].ExpiryDate)
@@ -38,7 +41,13 @@
                 {
                     <tr>
                         <td>
+                            @Html.DisplayFor(modelItem => order.Reference)
+                        </td>
+                        <td>
                             @Html.DisplayFor(modelItem => order.Customer.FullName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => order.Customer.StudentId)
                         </td>
                         <td>
                             @foreach (var item in order.Items)
@@ -46,9 +55,7 @@
                                 <div>@Html.DisplayFor(modelItem => item.Name)</div>
                             }
                         </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => order.Reference)
-                        </td>
+                        
                         <td>
                             @Html.DisplayFor(modelItem => order.ExpiryDate)
                         </td>
