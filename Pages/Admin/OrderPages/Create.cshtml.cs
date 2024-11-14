@@ -44,7 +44,14 @@ namespace eCashier.Pages.OrderPages
             foreach (var itemId in SelectedItems)
             {
                 var item = await _context.Items.FindAsync(itemId);
+
                 order.Items.Add(item);
+
+                await _context.SaveChangesAsync();
+
+                //Flexibile pricing
+                var joinEntity = _context.Set<ItemOrder>().Find(itemId, order.Id);
+                joinEntity.UnitPrice = item.Price;
             }
 
             await _context.SaveChangesAsync();
