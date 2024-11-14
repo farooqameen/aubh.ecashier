@@ -1,0 +1,26 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+    <div class="card mt-3">
+        <h6 class="card-header">Add Items with Flexible Pricing</h6>
+        <div class="card-body">
+            <form>
+                <div id="itemsContainer">
+                    <!-- Items will be added here dynamically -->
+                </div>
+
+                <button type="button" class="btn btn-secondary" onclick="addItem()">+ Add item</button>
+
+                <div id="errorMsg" class="error"></div>
+                <div id="successMsg" class="success">Order submitted successfully!</div>
+
+                <div class="footer">
+                    <div class="total">total: $<span id="ordertotal">0.00</span></div>
+                    <button type="submit" class="btn btn-success">Save order</button>
+                </div>
+            </form>
+        </div>
+    </div>
