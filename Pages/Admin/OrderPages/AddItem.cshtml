@@ -1,8 +1,6 @@
 ﻿@page
-@model eCashier.Pages.OrderPages.CreateModel
-
+@model AddItemModel
 @{
-    ViewData["Title"] = "Create";
 }
 
 <div class="card">
@@ -54,16 +52,10 @@
     </div>
 </div>
 
-@* @for (var i = 1; i <= 2; i++)
-{
-    <div>
-        <partial name="_ItemPartial" />
-    </div>
-} *@
-
 
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 }
+
