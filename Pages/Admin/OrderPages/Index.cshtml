@@ -21,6 +21,9 @@
                     <th>
                         @Html.DisplayNameFor(model => model.Order[0].Customer.StudentId)
                     </th>
+                    @* <th>
+                        @Html.DisplayNameFor(model => model.ItemOrders[0].Quantity)
+                    </th> *@
                     <th>
                         @Html.DisplayNameFor(model => model.Order[0].Items)
                     </th>
@@ -49,13 +52,18 @@
                         <td>
                             @Html.DisplayFor(modelItem => order.Customer.StudentId)
                         </td>
+                        @* <td>
+                            @foreach (var itemOrder in order.ItemOrders)
+                            {
+                                <div>@Html.DisplayFor(modelItem => itemOrder.Quantity)</div>
+                            }
+                        </td> *@
                         <td>
                             @foreach (var item in order.Items)
                             {
                                 <div>@Html.DisplayFor(modelItem => item.Name)</div>
                             }
                         </td>
-                        
                         <td>
                             @Html.DisplayFor(modelItem => order.CreatedOn)
                         </td>

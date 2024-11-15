@@ -1,15 +1,16 @@
-﻿using eCashier.Models;
+using eCashier.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
-namespace eCashier.Pages.OrderPages
+namespace eCashier.Pages.Admin.OrderPages
 {
-    public class CreateModel : PageModel
+    public class AddItemModel : PageModel
     {
         private readonly eCashier.Data.ApplicationDbContext _context;
 
-        public CreateModel(eCashier.Data.ApplicationDbContext context)
+        public AddItemModel(eCashier.Data.ApplicationDbContext context)
         {
             _context = context;
         }
@@ -38,7 +39,6 @@ namespace eCashier.Pages.OrderPages
             }
 
             var order = Order;
-
             _context.Orders.Add(order);
 
             foreach (var itemId in SelectedItems)
